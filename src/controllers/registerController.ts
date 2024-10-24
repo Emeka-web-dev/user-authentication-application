@@ -5,6 +5,7 @@ import { RegisterSchema } from "../schemas";
 import { getUserByEmail } from "../data/user";
 import { db } from "../lib/db";
 
+// Route: POST /api/auth/signup
 export const signup = async (
   req: Request,
   res: Response,

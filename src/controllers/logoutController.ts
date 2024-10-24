@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { NODE_ENV } from "../secrets";
+
+// Route: POST /api/auth/logout
 export const logout = (req: Request, res: Response) => {
   const cookie = req.cookies;
 

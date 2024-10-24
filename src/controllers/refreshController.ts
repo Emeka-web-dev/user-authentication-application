@@ -5,6 +5,7 @@ import { StatusError } from "../exceptions/status-error";
 import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "../secrets";
 import { getUserById } from "../data/user";
 
+// Route: POST /api/auth/refresh
 export const refresh = async (
   req: Request,
   res: Response,

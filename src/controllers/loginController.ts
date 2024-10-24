@@ -5,8 +5,9 @@ import { compareSync } from "bcryptjs";
 import { StatusError } from "../exceptions/status-error";
 import { LoginSchema } from "../schemas";
 import { getUserByEmail } from "../data/user";
-import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "../secrets";
+import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET, NODE_ENV } from "../secrets";
 
+// Route: POST /api/auth/login
 export const login = async (
   req: Request,
   res: Response,
@@ -52,14 +53,14 @@ export const login = async (
       res.clearCookie("token", {
         httpOnly: true,
         sameSite: "none",
-        secure: process.env.NODE_ENV === "production",
+        secure: NODE_ENV === "production",
       });
     }
 
     res.cookie("token", newRefreshToken, {
       httpOnly: true,
       sameSite: "none",
-      secure: process.env.NODE_ENV === "production",
+      secure: NODE_ENV === "production",
       maxAge: 60 * 60 * 2000, // 2 hour
     });
 
